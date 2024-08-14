@@ -1,4 +1,4 @@
-FROM debian:bullseye-20240211
+FROM debian:stable-slim
 
 WORKDIR /usr/src
 
@@ -18,8 +18,6 @@ HEALTHCHECK --interval=30s --timeout=10s \
     CMD curl -f http://localhost:6969/health || exit 1
 
 VOLUME /db/data
-
-CMD [ "python3", "-m", "http.server", "8000" ]
 
 ENTRYPOINT [ "python3", "-m", "http.server" ]
 CMD [ "8000" ]
